@@ -49,8 +49,8 @@ main (int argc, char* argv[])
 
   pcl::PointXYZ min;
   pcl::PointXYZ max;
-  //pca.reconstruct (proj_min, min);
-  //pca.reconstruct (proj_max, max);
+  pca.reconstruct (proj_min, min);
+  pca.reconstruct (proj_max, max);
   std::cout << " min.x= " << min.x << " max.x= " << max.x << " min.y= " <<
 min.y << " max.y= " << max.y << " min.z= " << min.z << " max.z= " << max.z
 << std::endl;
@@ -83,13 +83,24 @@ min.y << " max.y= " << max.y << " min.z= " << min.z << " max.z= " << max.z
   //adding the bounding box to a viewer :
   boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer (new
 pcl::visualization::PCLVisualizer ("3D Viewer"));
-  viewer->setBackgroundColor (200, 0, 0);
+  viewer->setBackgroundColor (0, 0, 0);
   viewer->addPointCloud<pcl::PointXYZ> (cloud, "NAO arm cloud");
   viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, "NAO arm cloud");
   viewer->addCoordinateSystem (1.0);
   viewer->initCameraParameters ();
   //viewer->addCube (min.x, max.x, min.y, max.y, min.z, max.z);/**/
-  viewer->addCube (translation, rotation, width, height, depth);
+  //viewer->addCube (translation, rotation, width, min.z, max.z);
+  //viewer->addCube (translation, rotation, width, height, depth);
+
+
+  //más o menos bueno
+  //viewer->addCube (translation, rotation, width, depth, height);
+
+  viewer->addCube (translation, rotation, depth, width, height);
+  //viewer->addCube (translation, rotation, max.x, max.y, max.z);
+
+  viewer->setRepresentationToWireframeForAllActors ();
+  //viewer->addCube (translation, min.x, width, height, depth);
   //--------------------
   // -----Main loop-----
   //--------------------
