@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/local/Cellar/pcl/1.8.1_2/include/pcl-1.8",
+                "/usr/local/Cellar/vtk/8.1.0_1/include/vtk-8.1",
+                "/usr/local/Cellar/eigen/3.3.4/include/eigen3",
+                "/usr/local/Cellar/eigen/3.3.4/include/eigen3"
+            ],
+            "defines": [],
+            "macFrameworkPath": [],
+            "compilerPath": "/usr/local/bin/gcc-7",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
+}
